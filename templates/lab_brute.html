@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-secondary"><i class="fa-solid fa-lock-open me-2"></i>Module 6: Brute Force Attack</h3>
+        <p class="mt-3">A brute force attack involves an attacker attempting many passwords or passphrases with the hope of eventually guessing correctly. Applications without rate limiting or account lockouts are highly vulnerable to this.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-secondary border-opacity-25 bg-light shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-secondary">Login Simulation</h5>
+                <p class="text-muted small mb-3">Try to guess the password for the <code>admin</code> user. If Vulnerability Mode is ON, you can keep trying forever!</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded bg-white">
+                            <form action="{{ url_for('lab_brute_force') }}" method="POST">
+                                <div class="mb-3">
+                                    <label class="small fw-bold">Username:</label>
+                                    <input type="text" name="username" class="form-control" value="admin" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="small fw-bold">Password Guess:</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Try guessing..." required>
+                                </div>
+                                <button type="submit" class="btn btn-secondary w-100 fw-bold">Submit Attempt</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded bg-white h-100 d-flex flex-column justify-content-center text-center">
+                            <h6 class="text-muted small mb-1 uppercase">ATTEMPTS IN THIS SESSION</h6>
+                            <h1 class="display-3 fw-bold {% if attempts >= 3 and not vuln_mode %}text-danger{% else %}text-secondary{% endif %}">{{ attempts }}</h1>
+                            <p class="mb-0 small fw-bold">
+                                {% if attempts >= 3 and not vuln_mode %}
+                                    <i class="fa-solid fa-circle-xmark text-danger me-1"></i> ACCOUNT LOCKED
+                                {% else %}
+                                    <i class="fa-solid fa-circle-check text-success me-1"></i> STATUS: OPEN
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 border border-secondary rounded bg-white mt-4">
+                    <h6 class="fw-bold text-secondary mb-2"><i class="fa-solid fa-lightbulb me-2"></i>How to Exploit</h6>
+                    <p class="small text-muted mb-0">The password is <code>supersecret123</code>. In **Safe Mode**, the account locks after 3 attempts. In **Vulnerable Mode**, you can continue guessing until you get it right!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+if login_failed:
+    <span class="text-warning"># Just log the failure</span>
+    return "Try again"
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+if login_failed:
+    attempts += 1
+    <span class="text-info">if attempts >= 3:
+        lock_account()</span>
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

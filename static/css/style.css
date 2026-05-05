@@ -1,0 +1,191 @@
+/* Amazon-Style E-Commerce CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaeded; /* Light grey background */
+    color: #0f1111;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header & Navigation */
+.navbar {
+    background-color: #232f3e; /* Dark blue/grey header */
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f0c14b !important;
+}
+
+/* Search Bar */
+.search-form {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-input {
+    border-radius: 4px 0 0 4px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.search-btn {
+    background-color: #febd69;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 10px 20px;
+    color: #111;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: #f3a847;
+}
+
+/* Hero Banner */
+.hero-banner {
+    height: 350px;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #ffd814;
+    border-color: #fcd200;
+    color: #0f1111;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(213,217,217,.5);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #f7ca00;
+    border-color: #f2c200;
+    color: #0f1111;
+}
+
+.btn-success {
+    background-color: #ffd814;
+    border-color: #fcd200;
+    color: #0f1111;
+}
+
+.btn-success:hover {
+    background-color: #f7ca00;
+    border-color: #f2c200;
+    color: #0f1111;
+}
+
+/* Product Cards */
+.product-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: opacity 0.2s;
+}
+
+.product-card:hover img {
+    opacity: 0.9;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #007185;
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+.product-title:hover {
+    color: #c45500;
+    text-decoration: underline;
+}
+
+.product-price {
+    font-size: 21px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+/* Containers and Layouts */
+.content-container {
+    background: white;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Forms (Login/Register/Checkout) */
+.form-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+/* Lab Badges */
+.secure-badge {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.insecure-badge {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.code-block {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+}

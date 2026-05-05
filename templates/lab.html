@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0"><i class="fa-solid fa-shield-halved me-2 text-primary"></i>Security Learning Lab</h2>
+        <span class="badge {% if vuln_mode %}bg-danger{% else %}bg-success{% endif %} p-2 rounded-pill shadow-sm">
+            Mode: {% if vuln_mode %}Vulnerable (Active){% else %}Safe (Secure){% endif %}
+        </span>
+    </div>
+    
+    <p class="text-muted mb-5">Explore common web vulnerabilities in a controlled environment. Toggle **Vulnerability Mode** in the header to see the difference between secure code and vulnerable implementation.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Module 1: SQLi -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-danger-subtle text-danger me-3">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">SQL Injection</h5>
+                    </div>
+                    <p class="card-text text-muted small">Learn how improper input handling can lead to unauthorized database access and data theft.</p>
+                    <a href="{{ url_for('lab_sqli') }}" class="btn btn-outline-danger btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 2: XSS -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-warning-subtle text-warning me-3">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Cross-Site Scripting</h5>
+                    </div>
+                    <p class="card-text text-muted small">See how malicious scripts can be injected into web pages and executed in users' browsers.</p>
+                    <a href="{{ url_for('lab_xss') }}" class="btn btn-outline-warning btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 3: Broken Auth -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-success-subtle text-success me-3">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Broken Authentication</h5>
+                    </div>
+                    <p class="card-text text-muted small">Understand the risks of weak password policies and improper session management.</p>
+                    <a href="{{ url_for('lab_auth') }}" class="btn btn-outline-success btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 4: IDOR -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-info-subtle text-info me-3">
+                            <i class="fa-solid fa-id-card-clip"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">IDOR</h5>
+                    </div>
+                    <p class="card-text text-muted small">Learn how direct object references can be manipulated to access unauthorized resources.</p>
+                    <a href="{{ url_for('lab_idor') }}" class="btn btn-outline-info btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 5: CSRF -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-primary-subtle text-primary me-3">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">CSRF Protection</h5>
+                    </div>
+                    <p class="card-text text-muted small">See how missing protections can allow attackers to perform actions on behalf of users.</p>
+                    <a href="{{ url_for('lab_csrf') }}" class="btn btn-outline-primary btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 6: Brute Force -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-secondary-subtle text-secondary me-3">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Brute Force</h5>
+                    </div>
+                    <p class="card-text text-muted small">Demonstrate how password guessing works and the importance of rate limiting.</p>
+                    <a href="{{ url_for('lab_brute_force') }}" class="btn btn-outline-secondary btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 7: Stored XSS -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-warning border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-warning-subtle text-warning me-3">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Stored XSS</h5>
+                    </div>
+                    <p class="card-text text-muted small">Malicious scripts stored on the server and served to every user who visits the page.</p>
+                    <a href="{{ url_for('lab_stored_xss') }}" class="btn btn-warning btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 8: Directory Traversal -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-danger border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-danger-subtle text-danger me-3">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Directory Traversal</h5>
+                    </div>
+                    <p class="card-text text-muted small">Manipulating file paths to access files outside the intended web directory.</p>
+                    <a href="{{ url_for('lab_download') }}" class="btn btn-danger btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 9: File Upload -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-danger border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-danger-subtle text-danger me-3">
+                            <i class="fa-solid fa-file-upload"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Unsafe File Upload</h5>
+                    </div>
+                    <p class="card-text text-muted small">Risks of allowing users to upload arbitrary file types to the server.</p>
+                    <a href="{{ url_for('lab_upload') }}" class="btn btn-danger btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 10: Open Redirect -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-info border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-info-subtle text-info me-3">
+                            <i class="fa-solid fa-share-from-square"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Open Redirect</h5>
+                    </div>
+                    <p class="card-text text-muted small">Redirecting users to malicious external websites through trusted links.</p>
+                    <a href="{{ url_for('lab_redirect') }}" class="btn btn-info text-white btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 11: Info Disclosure -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-secondary border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-secondary-subtle text-secondary me-3">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Info Disclosure</h5>
+                    </div>
+                    <p class="card-text text-muted small">Leaking sensitive server information or debug data to unauthorized users.</p>
+                    <a href="{{ url_for('lab_info_disclosure') }}" class="btn btn-secondary btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 12: Business Logic -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-success border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-success-subtle text-success me-3">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Business Logic Flaw</h5>
+                    </div>
+                    <p class="card-text text-muted small">Exploiting flaws in application logic, such as negative quantities or coupon abuse.</p>
+                    <a href="{{ url_for('lab_business_logic') }}" class="btn btn-success btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 13: Phishing -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-danger-subtle text-danger me-3">
+                            <i class="fa-solid fa-fish"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Phishing Awareness</h5>
+                    </div>
+                    <p class="card-text text-muted small">Learn how spoofed pages trick users into giving away credentials.</p>
+                    <a href="{{ url_for('lab_phishing') }}" class="btn btn-outline-danger btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 14: Ransomware -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-dark-subtle text-dark me-3">
+                            <i class="fa-solid fa-biohazard"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Ransomware</h5>
+                    </div>
+                    <p class="card-text text-muted small">Understand how file encryption attacks work at a conceptual level.</p>
+                    <a href="{{ url_for('lab_ransomware') }}" class="btn btn-outline-dark btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 15: DoS -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-warning-subtle text-warning me-3">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">Denial of Service</h5>
+                    </div>
+                    <p class="card-text text-muted small">Simulate how overwhelming requests can impact service availability.</p>
+                    <a href="{{ url_for('lab_dos') }}" class="btn btn-outline-warning btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 16: MITM -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-info-subtle text-info me-3">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">MITM Attacks</h5>
+                    </div>
+                    <p class="card-text text-muted small">Learn the difference between insecure HTTP and encrypted HTTPS.</p>
+                    <a href="{{ url_for('lab_mitm') }}" class="btn btn-outline-info btn-sm w-100 fw-bold mt-2">Explore Module</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 17: CSRF Attack -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 module-card border-top border-primary border-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-circle bg-primary-subtle text-primary me-3">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <h5 class="card-title mb-0 fw-bold">CSRF Simulation</h5>
+                    </div>
+                    <p class="card-text text-muted small">A live demonstration of how a malicious site can trigger actions on this site.</p>
+                    <a href="{{ url_for('lab_csrf_attack') }}" class="btn btn-primary btn-sm w-100 fw-bold mt-2 shadow-sm">Advanced Lab</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+.module-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+</style>
+{% endblock %}

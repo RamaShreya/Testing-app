@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-danger"><i class="fa-solid fa-file-arrow-up me-2"></i>Module 9: Unsafe File Upload</h3>
+        <p class="mt-3">Allowing users to upload files without validating the file type, content, or extension can allow an attacker to upload malicious scripts (like a web shell) that can execute code on the server.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-danger border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-danger">Upload File Test</h5>
+                <p class="text-muted small mb-3">Try uploading a safe image (PNG/JPG). Then, try to upload a restricted file type like <code>.html</code> or <code>.php</code>.</p>
+                
+                <form action="{{ url_for('lab_upload') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-white text-center">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" name="file" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger fw-bold px-5">Upload to Server</button>
+                    <p class="text-muted small mt-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> If Vulnerability Mode is ON, any file extension will be accepted!</p>
+                </form>
+
+                <div class="p-3 border border-danger rounded bg-white mt-3">
+                    <h6 class="fw-bold text-danger mb-2"><i class="fa-solid fa-bug me-2"></i>Exploit Scenario</h6>
+                    <p class="small text-muted mb-0">Upload a file named <code>shell.html</code> containing <code>&lt;script&gt;alert('XSS via File Upload')&lt;/script&gt;</code>. Then navigate to <code>/static/lab_uploads/shell.html</code> to trigger it.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+file = request.files.get('file')
+<span class="text-warning"># No extension or type check!</span>
+file.save(os.path.join(path, file.filename))
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+allowed = {'png', 'jpg', 'jpeg', 'gif'}
+<span class="text-info">if ext not in allowed:
+    return "Invalid type"</span>
+file.save(os.path.join(path, safe_name))
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

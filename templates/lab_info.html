@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-secondary"><i class="fa-solid fa-bug me-2"></i>Module 11: Information Disclosure</h3>
+        <p class="mt-3">Information disclosure occurs when an application unintentionally reveals sensitive information, such as configuration details, stack traces, or internal IP addresses, to unauthorized users.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-secondary border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-secondary">Sensitive Data Leakage Test</h5>
+                <p class="text-muted small mb-3">In production, detailed system info should never be visible to users. Toggle Vulnerability Mode to see what can be leaked.</p>
+                
+                {% if debug_info %}
+                <div class="p-3 border border-danger rounded bg-white shadow-sm">
+                    <h6 class="fw-bold text-danger mb-3"><i class="fa-solid fa-triangle-exclamation me-2"></i>LEAKED SYSTEM CONFIGURATION</h6>
+                    <table class="table table-sm table-bordered mb-0 small">
+                        <thead class="table-dark">
+                            <tr><th>Variable</th><th>Value</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for key, val in debug_info.items() %}
+                            <tr><td class="fw-bold bg-light">{{ key }}</td><td><code>{{ val }}</code></td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="mt-3 text-muted x-small">**Note:** In a real attack, seeing the <code>SECRET_KEY</code> or <code>DB_URI</code> (even partially) can lead to full server compromise.</p>
+                </div>
+                {% else %}
+                <div class="p-5 border rounded bg-white text-center">
+                    <i class="fa-solid fa-shield-check text-success fs-1 mb-3"></i>
+                    <h6 class="fw-bold">Safe Mode: No Information Leaked</h6>
+                    <p class="text-muted small">Enable Vulnerability Mode to simulate a configuration error or "Debug Mode" being left on.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Exposing internal environment variables or debug traces.</p>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+<span class="text-warning">return str(os.environ)</span>
+# or
+app.run(debug=True)
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+                    <p class="text-muted small">Custom error pages and restricted logs.</p>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+<span class="text-info">@app.errorhandler(500)</span>
+def internal_error(error):
+    return "Something went wrong", 500
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
