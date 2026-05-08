@@ -1,0 +1,132 @@
+2026-05-07 11:02:53,819 - session - INFO - Starting new session: session_52e7139a
+2026-05-07 11:02:53,848 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_52e7139a
+2026-05-07 11:02:53,854 - session - INFO - Session session_52e7139a started. PID: 7516
+2026-05-07 12:30:04,412 - session - INFO - Starting new session: session_c1f84566
+2026-05-07 12:30:04,437 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_c1f84566
+2026-05-07 12:30:04,445 - session - INFO - Session session_c1f84566 started. URL: http://127.0.0.1:51437, PID: 13148
+2026-05-07 12:40:12,819 - session - INFO - Terminating session: session_c1f84566
+2026-05-07 12:40:12,918 - session - ERROR - Failed to delete runtime directory D:\antigravity\vulnerable app\runtime\session_c1f84566: [WinError 5] Access is denied: 'D:\\antigravity\\vulnerable app\\runtime\\session_c1f84566'
+2026-05-07 12:40:16,236 - session - INFO - Starting new session: session_4694bfd4
+2026-05-07 12:40:16,270 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_4694bfd4
+2026-05-07 12:40:16,278 - session - INFO - Session session_4694bfd4 started. URL: http://127.0.0.1:61663, PID: 7956
+2026-05-07 12:55:57,155 - session - INFO - Terminating session: session_4694bfd4
+2026-05-07 12:55:57,296 - session - ERROR - Failed to delete runtime directory D:\antigravity\vulnerable app\runtime\session_4694bfd4: [WinError 5] Access is denied: 'D:\\antigravity\\vulnerable app\\runtime\\session_4694bfd4'
+2026-05-07 12:55:59,765 - session - INFO - Starting new session: session_a96df022
+2026-05-07 12:55:59,798 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_a96df022
+2026-05-07 12:55:59,806 - session - INFO - Session session_a96df022 started. URL: http://127.0.0.1:65265, PID: 12716
+2026-05-07 12:59:29,646 - session - INFO - Terminating session: session_a96df022
+2026-05-07 12:59:29,792 - session - ERROR - Failed to delete runtime directory D:\antigravity\vulnerable app\runtime\session_a96df022: [WinError 5] Access is denied: 'D:\\antigravity\\vulnerable app\\runtime\\session_a96df022'
+2026-05-07 12:59:33,144 - session - INFO - Starting new session: session_09b54418
+2026-05-07 12:59:33,177 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_09b54418
+2026-05-07 12:59:33,185 - session - INFO - Session session_09b54418 started. URL: http://127.0.0.1:51051, PID: 6000
+2026-05-07 13:07:49,030 - session - INFO - Starting new session: session_218fbd4e
+2026-05-07 13:07:49,061 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_218fbd4e
+2026-05-07 13:07:49,069 - session - INFO - Session session_218fbd4e started. URL: http://127.0.0.1:59290, PID: 3536
+2026-05-07 13:12:12,461 - session - INFO - Starting new session: session_9796c4ed
+2026-05-07 13:12:12,486 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_9796c4ed
+2026-05-07 13:12:12,494 - session - INFO - Session session_9796c4ed started. URL: http://127.0.0.1:51420, PID: 13008
+2026-05-07 13:20:32,967 - session - INFO - Terminating session: session_9796c4ed
+2026-05-07 13:20:33,053 - session - ERROR - Failed to delete runtime directory D:\antigravity\vulnerable app\runtime\session_9796c4ed: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\antigravity\\vulnerable app\\runtime\\session_9796c4ed\\instance\\database.db'
+2026-05-07 13:20:37,180 - session - INFO - Starting new session: session_e847347e
+2026-05-07 13:20:37,212 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_e847347e
+2026-05-07 13:20:37,221 - session - INFO - Session session_e847347e started. URL: http://127.0.0.1:54889, PID: 17620
+2026-05-07 13:21:57,799 - session - INFO - Terminating session: session_e847347e
+2026-05-07 13:21:57,895 - session - INFO - Deleted runtime directory: D:\antigravity\vulnerable app\runtime\session_e847347e
+2026-05-07 13:22:00,357 - session - INFO - Starting new session: session_0197a13f
+2026-05-07 13:22:00,380 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_0197a13f
+2026-05-07 13:22:00,390 - session - INFO - Session session_0197a13f started. URL: http://127.0.0.1:51464, PID: 17360
+2026-05-07 13:32:45,243 - session - INFO - Terminating session: session_0197a13f (PID: None)
+2026-05-07 13:32:45,244 - session - ERROR - Failed to delete runtime directory D:\antigravity\vulnerable app\runtime\session_0197a13f: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\antigravity\\vulnerable app\\runtime\\session_0197a13f\\instance\\database.db'
+2026-05-07 13:32:45,251 - session - INFO - Starting new session: session_e3218ac4
+2026-05-07 13:32:45,271 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_e3218ac4
+2026-05-07 13:32:45,282 - session - INFO - Session session_e3218ac4 initialized. URL: http://127.0.0.1:62097, PID: 2208
+2026-05-07 14:28:06,395 - session - INFO - Starting new session: session_bfd5c2ee
+2026-05-07 14:28:06,429 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_bfd5c2ee
+2026-05-07 14:28:06,440 - session - INFO - Session session_bfd5c2ee initialized. URL: http://127.0.0.1:63565, PID: 19072
+2026-05-07 14:28:08,619 - session - WARNING - Session session_e3218ac4 timed out after 3323.3380579948425 seconds of inactivity.
+2026-05-07 14:28:08,622 - session - INFO - Terminating session: session_e3218ac4 (PID: 2208)
+2026-05-07 15:35:25,315 - session - WARNING - Session session_bfd5c2ee timed out after 4038.8768639564514 seconds of inactivity.
+2026-05-07 15:35:25,315 - session - INFO - Terminating session: session_bfd5c2ee (PID: 19072)
+2026-05-07 15:35:25,602 - session - INFO - Deleted runtime directory: D:\antigravity\vulnerable app\runtime\session_bfd5c2ee
+2026-05-07 16:39:26,697 - session - INFO - Starting new session: session_07560433
+2026-05-07 16:39:26,729 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_07560433
+2026-05-07 16:39:26,738 - session - INFO - Session session_07560433 initialized. URL: http://127.0.0.1:52895, PID: 17800
+2026-05-07 16:44:08,335 - session - INFO - Terminating session: session_07560433 (PID: 17800)
+2026-05-07 16:44:08,440 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_07560433
+2026-05-07 16:44:09,082 - session - ERROR - Session session_07560433 process died unexpectedly. Exit code: 1
+2026-05-07 16:44:09,083 - session - INFO - Terminating session: session_07560433 (PID: 17800)
+2026-05-07 16:44:11,582 - session - INFO - Starting new session: session_66143899
+2026-05-07 16:44:11,609 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_66143899
+2026-05-07 16:44:11,622 - session - INFO - Session session_66143899 initialized. URL: http://127.0.0.1:64245, PID: 17540
+2026-05-07 16:48:22,738 - session - INFO - Terminating session: session_66143899 (PID: 17540)
+2026-05-07 16:48:22,836 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_66143899
+2026-05-07 16:56:22,412 - session - INFO - Starting new session: session_b7111d54
+2026-05-07 16:56:22,448 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_b7111d54
+2026-05-07 16:56:22,465 - session - INFO - Session session_b7111d54 initialized. URL: http://127.0.0.1:64039, PID: 11132
+2026-05-07 17:24:36,083 - session - INFO - Terminating session: session_b7111d54 (PID: 11132)
+2026-05-07 17:24:36,236 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_b7111d54
+2026-05-07 17:24:43,766 - session - INFO - Starting new session: session_7fe24932
+2026-05-07 17:24:43,790 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_7fe24932
+2026-05-07 17:24:43,801 - session - INFO - Session session_7fe24932 initialized. URL: http://127.0.0.1:59775, PID: 18488
+2026-05-07 17:26:18,004 - session - INFO - Terminating session: session_b7111d54 (PID: 11132)
+2026-05-07 17:26:24,232 - session - INFO - Starting new session: session_5a0f4c3d
+2026-05-07 17:26:24,258 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_5a0f4c3d
+2026-05-07 17:26:24,273 - session - INFO - Session session_5a0f4c3d initialized. URL: http://127.0.0.1:54871, PID: 9348
+2026-05-07 17:29:37,708 - session - INFO - Terminating session: session_5a0f4c3d (PID: 9348)
+2026-05-07 17:29:37,969 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_5a0f4c3d
+2026-05-07 17:29:43,395 - session - INFO - Terminating session: session_7fe24932 (PID: 18488)
+2026-05-07 17:29:43,517 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_7fe24932
+2026-05-07 17:30:02,935 - session - INFO - Starting new session: session_32291324
+2026-05-07 17:30:02,966 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_32291324
+2026-05-07 17:30:02,975 - session - INFO - Session session_32291324 initialized. URL: http://127.0.0.1:65439, PID: 15308
+2026-05-07 17:31:48,528 - session - INFO - Terminating session: session_32291324 (PID: 15308)
+2026-05-07 17:31:48,664 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_32291324
+2026-05-07 17:31:55,253 - session - ERROR - Session session_32291324 process died unexpectedly. Exit code: 1
+2026-05-07 17:31:55,253 - session - INFO - Terminating session: session_32291324 (PID: 15308)
+2026-05-07 17:32:06,815 - session - INFO - Starting new session: session_d3520904
+2026-05-07 17:32:06,867 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_d3520904
+2026-05-07 17:32:06,878 - session - INFO - Session session_d3520904 initialized. URL: http://127.0.0.1:52001, PID: 17216
+2026-05-07 17:51:58,845 - session - INFO - Terminating session: session_d3520904 (PID: 17216)
+2026-05-07 17:51:58,950 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_d3520904
+2026-05-07 17:51:59,731 - session - ERROR - Session session_d3520904 process died unexpectedly. Exit code: 1
+2026-05-07 17:51:59,731 - session - INFO - Terminating session: session_d3520904 (PID: 17216)
+2026-05-07 17:53:05,456 - session - INFO - Starting new session: session_d97f1b4a
+2026-05-07 17:53:05,485 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_d97f1b4a
+2026-05-07 17:53:05,498 - session - INFO - Session session_d97f1b4a initialized. URL: http://127.0.0.1:54788, PID: 19928
+2026-05-07 17:53:41,814 - session - INFO - Starting new session: session_af4bb468
+2026-05-07 17:53:41,836 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_af4bb468
+2026-05-07 17:53:41,848 - session - INFO - Session session_af4bb468 initialized. URL: http://127.0.0.1:53598, PID: 15088
+2026-05-07 17:54:16,868 - session - INFO - Terminating session: session_d97f1b4a (PID: 19928)
+2026-05-07 17:54:16,966 - session - INFO - Deleted runtime directory: D:\antigravity\vulnerable app\runtime\session_d97f1b4a
+2026-05-07 17:54:18,204 - session - ERROR - Session session_d97f1b4a process died unexpectedly. Exit code: 1
+2026-05-07 17:54:18,204 - session - INFO - Terminating session: session_d97f1b4a (PID: 19928)
+2026-05-07 17:54:40,707 - session - INFO - Terminating session: session_af4bb468 (PID: 15088)
+2026-05-07 17:54:40,805 - session - INFO - Deleted runtime directory: D:\antigravity\vulnerable app\runtime\session_af4bb468
+2026-05-07 17:54:44,554 - session - ERROR - Session session_af4bb468 process died unexpectedly. Exit code: 1
+2026-05-07 17:54:44,554 - session - INFO - Terminating session: session_af4bb468 (PID: 15088)
+2026-05-07 18:00:11,274 - session - INFO - Terminating session: session_d3520904 (PID: 17216)
+2026-05-07 18:00:13,627 - session - INFO - Starting new session: session_42c55a56
+2026-05-07 18:00:13,658 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_42c55a56
+2026-05-07 18:00:13,670 - session - INFO - Session session_42c55a56 initialized. URL: http://127.0.0.1:61183, PID: 3708
+2026-05-07 18:00:29,901 - session - INFO - Starting new session: session_3e354844
+2026-05-07 18:00:29,933 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_3e354844
+2026-05-07 18:00:29,943 - session - INFO - Session session_3e354844 initialized. URL: http://127.0.0.1:51945, PID: 10576
+2026-05-07 18:03:30,782 - session - INFO - Starting new session: session_120c532e
+2026-05-07 18:03:30,812 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_120c532e
+2026-05-07 18:03:30,823 - session - INFO - Session session_120c532e initialized. URL: http://127.0.0.1:61813, PID: 16664
+2026-05-07 18:13:09,327 - session - INFO - Terminating session: session_120c532e (PID: 16664)
+2026-05-07 18:13:09,420 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_120c532e
+2026-05-07 18:13:09,427 - session - INFO - Terminating session: session_3e354844 (PID: 10576)
+2026-05-07 18:13:09,517 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_3e354844
+2026-05-07 18:13:10,271 - session - INFO - Terminating session: session_42c55a56 (PID: 3708)
+2026-05-07 18:13:10,366 - session - INFO - Deleted runtime directory: d:\antigravity\vulnerable app\runtime\session_42c55a56
+2026-05-07 18:13:10,370 - session - INFO - Starting new session: session_dd9e4ba8
+2026-05-07 18:13:10,399 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_dd9e4ba8
+2026-05-07 18:13:10,412 - session - INFO - Session session_dd9e4ba8 initialized. URL: http://127.0.0.1:49925, PID: 10444
+2026-05-07 18:22:59,506 - session - INFO - Starting new session: session_b747032c
+2026-05-07 18:22:59,540 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_b747032c
+2026-05-07 18:22:59,551 - session - INFO - Session session_b747032c initialized. URL: http://127.0.0.1:51682, PID: 11156
+2026-05-07 18:38:12,808 - session - ERROR - Session session_b747032c process died unexpectedly. Exit code: 1
+2026-05-07 18:38:12,809 - session - INFO - Terminating session: session_b747032c (PID: 11156)
+2026-05-07 18:38:13,501 - session - ERROR - Session session_dd9e4ba8 process died unexpectedly. Exit code: 1
+2026-05-07 18:38:13,501 - session - INFO - Terminating session: session_dd9e4ba8 (PID: 10444)

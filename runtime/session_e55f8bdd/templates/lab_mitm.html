@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Man-in-the-Middle (MITM)</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white">
+        <h3 class="fs-4 fw-bold text-success"><i class="fa-solid fa-mask me-2"></i>Module 10: Man-in-the-Middle (MITM)</h3>
+        <p class="mt-3">A Man-in-the-Middle (MITM) attack occurs when an attacker secretly intercepts and possibly alters the communication between two parties who believe they are directly communicating with each other. For example, if you connect to a malicious public Wi-Fi network, the attacker can view everything you send.</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Sending sensitive data over unencrypted HTTP.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger">&lt;!-- INSECURE EXAMPLE (for learning only) --&gt;</span>
+<span class="text-danger">&lt;!-- Form submitting over standard HTTP --&gt;</span>
+
+<span class="text-warning">URL: http://www.testingapp.com/checkout</span>
+
+&lt;form action="http://www.testingapp.com/pay" method="POST"&gt;
+    &lt;input type="text" name="credit_card_number"&gt;
+    &lt;button type="submit"&gt;Pay Now&lt;/button&gt;
+&lt;/form&gt;
+
+<span class="text-warning">&lt;!-- Because the URL is HTTP, the credit card is sent --&gt;</span>
+<span class="text-warning">&lt;!-- across the internet in plain text. Any router --&gt;</span>
+<span class="text-warning">&lt;!-- between the user and the server can read it! --&gt;</span>
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Enforcing HTTPS with valid SSL/TLS certificates.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success">&lt;!-- SECURE IMPLEMENTATION --&gt;</span>
+<span class="text-success">&lt;!-- Form submitting over encrypted HTTPS --&gt;</span>
+
+<span class="text-info">URL: https://www.testingapp.com/checkout</span>
+
+&lt;form action="https://www.testingapp.com/pay" method="POST"&gt;
+    &lt;input type="text" name="credit_card_number"&gt;
+    &lt;button type="submit"&gt;Pay Now&lt;/button&gt;
+&lt;/form&gt;
+
+<span class="text-info">&lt;!-- Because the URL is HTTPS, the data is scrambled --&gt;</span>
+<span class="text-info">&lt;!-- using mathematically secure encryption before it --&gt;</span>
+<span class="text-info">&lt;!-- leaves the browser. An attacker only sees gibberish. --&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

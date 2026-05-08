@@ -1,0 +1,3 @@
+2026-05-07 18:54:17,123 - session - INFO - Starting new session: session_e55f8bdd
+2026-05-07 18:54:17,154 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_e55f8bdd
+2026-05-07 18:54:17,164 - session - INFO - Session session_e55f8bdd initialized. URL: http://127.0.0.1:57949, PID: 19180

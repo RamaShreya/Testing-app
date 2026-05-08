@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-success"><i class="fa-solid fa-calculator me-2"></i>Module 12: Business Logic Flaw</h3>
+        <p class="mt-3">Business logic flaws are vulnerabilities that arise from faulty application design and implementation. They allow attackers to manipulate the intended behavior of the application (e.g., getting items for free or skipping payment steps).</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-success border-opacity-25 bg-light shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-success">Mock Checkout Test</h5>
+                <p class="text-muted small mb-3">Try to manipulate the checkout process. Can you get the price to be negative?</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded bg-white">
+                            <h6 class="fw-bold mb-3">Item: Premium Subscription</h6>
+                            <p class="mb-1">Base Price: <strong>$100.00</strong></p>
+                            
+                            <form action="{{ url_for('lab_business_logic') }}" method="POST">
+                                <div class="mb-3">
+                                    <label class="small fw-bold">Quantity:</label>
+                                    <input type="number" name="quantity" class="form-control" value="{{ quantity }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="small fw-bold">Coupon Code:</label>
+                                    <div class="input-group">
+                                        <input type="text" name="coupon" class="form-control" placeholder="Try SAVE10 or WELCOME50">
+                                    </div>
+                                    <small class="text-muted">Available: <code>SAVE10</code> (10%), <code>WELCOME50</code> (50%)</small>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100 fw-bold">Update Total</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="p-4 border rounded bg-dark text-white h-100 d-flex flex-column justify-content-center text-center">
+                            <p class="mb-1 small text-secondary">SUBTOTAL (x{{ quantity }})</p>
+                            <h4 class="mb-3">${{ "%.2f"|format(total * quantity) }}</h4>
+                            <p class="mb-1 small text-secondary">DISCOUNT</p>
+                            <h4 class="text-warning mb-3">-${{ "%.2f"|format(discount) }}</h4>
+                            <hr class="border-secondary">
+                            <p class="mb-1 small text-secondary">FINAL PRICE</p>
+                            <h1 class="{% if final_price < 0 %}text-danger{% else %}text-success{% endif %} fw-bold">${{ "%.2f"|format(final_price) }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 border border-success rounded bg-white mt-4">
+                    <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-lightbulb me-2"></i>Exploit Scenario</h6>
+                    <p class="small text-muted mb-0">Toggle **Vulnerability Mode: ON** and enter a <strong>negative quantity</strong> (e.g. <code>-1</code>). In many broken apps, this will cause the total to become negative, effectively "charging" the store!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+qty = int(request.form.get('quantity'))
+<span class="text-warning"># DANGER: Trusting user input</span>
+final_price = (price * qty) - discount
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+qty = int(request.form.get('quantity'))
+<span class="text-info">if qty < 1:
+    qty = 1</span>
+final_price = (price * qty) - discount
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

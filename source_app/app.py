@@ -3,6 +3,22 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from sqlalchemy import text
 import os
+import sys
+
+# Ensure wrapper can be imported when running from runtime/session_xxx
+wrapper_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'wrapper'))
+sys.path.insert(0, wrapper_dir)
+
+try:
+    from logger_manager import access_logger, auth_logger, attack_logger, changes_logger
+except ImportError:
+    import logging
+    # Fallback loggers if not found (e.g. running directly)
+    access_logger = logging.getLogger('access')
+    auth_logger = logging.getLogger('auth')
+    attack_logger = logging.getLogger('attack')
+    changes_logger = logging.getLogger('changes')
+
 from models import db, User, Product, Order, LabReview, Coupon
 
 app = Flask(__name__)
@@ -20,6 +36,17 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+@app.before_request
+def log_request_info():
+    session_id = os.environ.get('LAB_SESSION_ID', 'dev_session')
+    access_logger.info(f"[{session_id}] {request.method} {request.url} - IP: {request.remote_addr}")
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    session_id = os.environ.get('LAB_SESSION_ID', 'dev_session')
+    access_logger.error(f"[{session_id}] Exception on {request.url}: {str(e)}", exc_info=True)
+    return str(e), 500
 
 # --- Context Processor for Global Template Variables ---
 @app.context_processor
@@ -68,15 +95,18 @@ def login():
                 # or if the password is "anything" (for quick testing)
                 if password == user.password_hash or password == "password123":
                     login_user(user)
+                    auth_logger.warning(f"Vulnerable login exploited for user: {username}")
                     flash('VULNERABLE LOGIN SUCCESSFUL (Broken Auth)', 'danger')
                     return redirect(url_for('index'))
             
             # SECURE: Using proper salted hashing
             if check_password_hash(user.password_hash, password):
                 login_user(user)
+                auth_logger.info(f"Successful login for user: {username}")
                 flash('Logged in successfully.', 'success')
                 return redirect(url_for('index'))
         
+        auth_logger.warning(f"Failed login attempt for user: {username}")
         flash('Invalid username or password.', 'danger')
             
     return render_template('login.html')
@@ -105,7 +135,9 @@ def register():
 @app.route('/logout')
 @login_required
 def logout():
+    username = current_user.username
     logout_user()
+    auth_logger.info(f"User {username} logged out")
     flash('Logged out successfully.', 'info')
     return redirect(url_for('index'))
 
@@ -209,6 +241,7 @@ def lab_sqli():
         if vuln_mode:
             # INSECURE: Raw SQL concatenation
             query_used = f"SELECT id, username FROM user WHERE username = '{username}'"
+            attack_logger.warning(f"SQLi attempt detected: {query_used}")
             try:
                 # Using text() but still vulnerable because of f-string
                 results = db.session.execute(text(query_used)).fetchall()
@@ -243,9 +276,13 @@ def view_orders(user_id):
 def lab_xss():
     review = None
     if request.method == 'POST':
+        author = request.form.get("author", "Anonymous")
+        content = request.form.get("content", "")
+        if "<script>" in content.lower() or "onerror" in content.lower():
+            attack_logger.warning(f"Reflected XSS payload detected from {author}: {content}")
         review = {
-            "author": request.form.get("author", "Anonymous"),
-            "content": request.form.get("content", "")
+            "author": author,
+            "content": content
         }
     return render_template('lab_xss.html', review=review)
 
@@ -289,6 +326,8 @@ def lab_stored_xss():
         content = request.form.get('content')
         username = request.form.get('username', 'Anonymous')
         if content:
+            if "<script>" in content.lower() or "onerror" in content.lower():
+                attack_logger.warning(f"Stored XSS payload injected by {username}: {content}")
             new_review = LabReview(username=username, content=content)
             db.session.add(new_review)
             db.session.commit()
@@ -314,6 +353,7 @@ def lab_download():
     if vuln_mode:
         # INSECURE: Directory Traversal
         file_path = os.path.join(download_dir, filename)
+        attack_logger.warning(f"Directory traversal attempted: {filename}")
         try:
             return send_file(file_path)
         except Exception as e:
@@ -439,10 +479,12 @@ def lab_brute_force():
         
         if username == 'admin' and password == 'supersecret123':
             session['brute_attempts'] = 0
+            auth_logger.warning(f"Brute force lab login successful for admin")
             flash('Login Successful!', 'success')
         else:
             attempts += 1
             session['brute_attempts'] = attempts
+            auth_logger.info(f"Brute force lab attempt failed for {username}")
             flash('Invalid credentials.', 'danger')
             
     return render_template('lab_brute.html', attempts=attempts)
@@ -501,11 +543,13 @@ def init_db():
     db.session.add_all(coupons)
     db.session.commit()
     
-    # Ensure directories exist for traversal and upload labs
+    # Ensure directories exist and are clean for traversal and upload labs
+    import shutil
     for folder in ['downloads', 'lab_uploads']:
         path = os.path.join(app.root_path, 'static', folder)
-        if not os.path.exists(path):
-            os.makedirs(path)
+        if os.path.exists(path):
+            shutil.rmtree(path)
+        os.makedirs(path)
             
     # Create a dummy secret file for traversal lab
     with open(os.path.join(app.root_path, 'static', 'downloads', 'readme.txt'), 'w') as f:
@@ -520,4 +564,7 @@ def init_db():
 if __name__ == '__main__':
     with app.app_context():
         init_db()
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('LAB_PORT', 5000))
+    # Disable reloader in lab mode to prevent duplicate processes
+    debug_mode = os.environ.get('FLASK_DEBUG', '1') == '1'
+    app.run(host='0.0.0.0', port=port, debug=debug_mode, use_reloader=debug_mode)

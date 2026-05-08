@@ -1,0 +1,3 @@
+2026-05-07 18:48:27,470 - session - INFO - Starting new session: session_6691c9ef
+2026-05-07 18:48:27,518 - session - INFO - Copied source_app to d:\antigravity\vulnerable app\runtime\session_6691c9ef
+2026-05-07 18:48:27,528 - session - INFO - Session session_6691c9ef initialized. URL: http://127.0.0.1:53762, PID: 6832

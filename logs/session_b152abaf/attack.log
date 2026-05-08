@@ -1,0 +1,1 @@
+2026-05-07 18:39:29,059 - attack - WARNING - SQLi attempt detected: SELECT id, username FROM user WHERE username = 'admin' OR '1'='1'

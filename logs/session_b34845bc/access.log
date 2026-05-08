@@ -1,0 +1,66 @@
+2026-05-07 18:42:52,049 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/ - IP: 127.0.0.1
+2026-05-07 18:42:52,275 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/ - IP: 127.0.0.1
+2026-05-07 18:42:52,434 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:42:52,449 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:42:52,462 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:42:52,696 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:42:52,697 - access - ERROR - [session_b34845bc] Exception on http://127.0.0.1:62430/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:46:36,629 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/cart - IP: 127.0.0.1
+2026-05-07 18:46:36,630 - access - ERROR - [session_b34845bc] Exception on http://127.0.0.1:62430/cart: cart.html
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\runtime\session_b34845bc\app.py", line 176, in cart
+    return render_template('cart.html', cart_items=cart_items, total=total)
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: cart.html
+2026-05-07 18:46:36,681 - access - INFO - [session_b34845bc] GET http://127.0.0.1:62430/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:46:36,681 - access - ERROR - [session_b34845bc] Exception on http://127.0.0.1:62430/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

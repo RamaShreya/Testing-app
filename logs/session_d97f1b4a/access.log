@@ -1,0 +1,21 @@
+2026-05-07 17:53:08,055 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/ - IP: 127.0.0.1
+2026-05-07 17:53:08,310 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/ - IP: 127.0.0.1
+2026-05-07 17:53:08,486 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/static/css/style.css - IP: 127.0.0.1
+2026-05-07 17:53:08,529 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 17:53:08,550 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 17:53:09,429 - access - INFO - [session_d97f1b4a] GET http://127.0.0.1:54788/favicon.ico - IP: 127.0.0.1
+2026-05-07 17:53:09,430 - access - ERROR - [session_d97f1b4a] Exception on http://127.0.0.1:54788/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

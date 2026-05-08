@@ -1,0 +1,188 @@
+2026-05-07 18:03:33,421 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/ - IP: 127.0.0.1
+2026-05-07 18:03:33,631 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/ - IP: 127.0.0.1
+2026-05-07 18:03:33,680 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:03:33,712 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:03:33,732 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:03:33,919 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:03:33,920 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:03:37,826 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/login - IP: 127.0.0.1
+2026-05-07 18:03:37,840 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:03:37,902 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:03:37,902 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:03:42,711 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/cart - IP: 127.0.0.1
+2026-05-07 18:03:42,728 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:03:42,769 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:03:42,769 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:19,207 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/cart - IP: 127.0.0.1
+2026-05-07 18:04:19,227 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:19,270 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:19,271 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:23,979 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/login - IP: 127.0.0.1
+2026-05-07 18:04:23,990 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:24,026 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:24,026 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:25,936 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/cart - IP: 127.0.0.1
+2026-05-07 18:04:25,946 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:25,978 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:25,978 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:28,314 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/ - IP: 127.0.0.1
+2026-05-07 18:04:28,328 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:28,338 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:04:28,347 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:04:28,434 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:28,434 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:30,994 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/add_to_cart/2 - IP: 127.0.0.1
+2026-05-07 18:04:31,004 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/ - IP: 127.0.0.1
+2026-05-07 18:04:31,023 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:31,035 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:04:31,042 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:04:31,094 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:31,094 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:32,716 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/cart - IP: 127.0.0.1
+2026-05-07 18:04:32,730 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:32,771 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:32,771 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:04:35,407 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/checkout - IP: 127.0.0.1
+2026-05-07 18:04:35,423 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:04:35,467 - access - INFO - [session_120c532e] GET http://127.0.0.1:61813/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:04:35,467 - access - ERROR - [session_120c532e] Exception on http://127.0.0.1:61813/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "d:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

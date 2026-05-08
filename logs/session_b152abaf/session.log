@@ -1,0 +1,7 @@
+2026-05-07 18:38:52,566 - session - INFO - Starting new session: session_b152abaf
+2026-05-07 18:38:52,590 - session - INFO - Copied source_app to D:\antigravity\vulnerable app\runtime\session_b152abaf
+2026-05-07 18:38:52,600 - session - INFO - Session session_b152abaf initialized. URL: http://127.0.0.1:53842, PID: 9104
+2026-05-07 18:39:48,826 - session - INFO - Terminating session: session_b152abaf (PID: 9104)
+2026-05-07 18:39:48,934 - session - INFO - Deleted runtime directory: D:\antigravity\vulnerable app\runtime\session_b152abaf
+2026-05-07 18:39:55,323 - session - ERROR - Session session_b152abaf process died unexpectedly. Exit code: 1
+2026-05-07 18:39:55,324 - session - INFO - Terminating session: session_b152abaf (PID: 9104)

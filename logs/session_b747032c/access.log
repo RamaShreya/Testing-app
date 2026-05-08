@@ -1,0 +1,26 @@
+2026-05-07 18:23:02,143 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/ - IP: 127.0.0.1
+2026-05-07 18:23:02,441 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/ - IP: 127.0.0.1
+2026-05-07 18:23:02,617 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:23:02,628 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:23:02,656 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:23:03,587 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:23:03,587 - access - ERROR - [session_b747032c] Exception on http://127.0.0.1:51682/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:25:40,049 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/ - IP: 127.0.0.1
+2026-05-07 18:25:40,054 - access - INFO - [session_b747032c] POST http://127.0.0.1:51682/login - IP: 127.0.0.1
+2026-05-07 18:33:07,869 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/toggle-vuln - IP: 127.0.0.1
+2026-05-07 18:33:07,871 - access - INFO - [session_b747032c] GET http://127.0.0.1:51682/ - IP: 127.0.0.1
+2026-05-07 18:33:07,878 - access - INFO - [session_b747032c] POST http://127.0.0.1:51682/lab/sqli - IP: 127.0.0.1

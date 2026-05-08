@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cross-Site Scripting</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white">
+        <h3 class="fs-4 fw-bold text-warning"><i class="fa-solid fa-code me-2"></i>Module 2: Cross-Site Scripting (XSS)</h3>
+        <p class="mt-3">XSS occurs when an application includes untrusted data in a web page without proper validation or escaping. If we allow users to leave product reviews, an attacker could inject malicious scripts into the page viewed by other users.</p>
+        
+        <div class="card mb-4 border-warning border-opacity-25 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Interactive Simulation</h5>
+                <p class="text-muted small mb-3">Try submitting a review with an XSS payload. Example: <code>&lt;script&gt;alert('XSS Executed!');&lt;/script&gt;</code></p>
+                <form action="{{ url_for('lab_xss') }}" method="POST">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-4">
+                            <input type="text" name="author" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" name="content" class="form-control" placeholder="Write a review... (Try an XSS payload here)" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-sm fw-bold">Submit Review</button>
+                </form>
+                
+                {% if review %}
+                <hr>
+                <div class="mt-3 p-3 border rounded bg-white shadow-sm">
+                    <h6 class="fw-bold"><i class="fa-solid fa-user me-2 text-secondary"></i>Review by {{ review.author }}</h6>
+                    <div class="user-review-content mt-2 p-2 bg-light border rounded">
+                        {% if vuln_mode %}
+                            {{ review.content | safe }}
+                        {% else %}
+                            {{ review.content }}
+                        {% endif %}
+                    </div>
+                    <p class="text-muted small mt-2 mb-0">
+                        <i class="fa-solid fa-circle-info me-1"></i> Current Mode: 
+                        {% if vuln_mode %}
+                            <strong class="text-danger">Vulnerable (Script may execute if present!)</strong>
+                        {% else %}
+                            <strong class="text-success">Safe (Script is rendered as harmless text)</strong>
+                        {% endif %}
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Rendering raw, unescaped user input in HTML.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger">&lt;!-- INSECURE EXAMPLE (for learning only) --&gt;</span>
+<span class="text-danger">&lt;!-- The 'safe' filter disables auto-escaping --&gt;</span>
+
+&lt;div class="user-review"&gt;
+    &lt;h5&gt;{% raw %}{{ review.author }}{% endraw %}&lt;/h5&gt;
+    
+    <span class="text-warning">&lt;!-- If review content is "&lt;script&gt;stealCookies();&lt;/script&gt;", --&gt;</span>
+    <span class="text-warning">&lt;!-- the browser will execute the script! --&gt;</span>
+    &lt;p&gt;{% raw %}{{ review.content | safe }}{% endraw %}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Using framework auto-escaping (Context-aware output encoding).</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success">&lt;!-- SECURE IMPLEMENTATION --&gt;</span>
+<span class="text-success">&lt;!-- Relying on default Jinja2 behavior --&gt;</span>
+
+&lt;div class="user-review"&gt;
+    &lt;h5&gt;{% raw %}{{ review.author }}{% endraw %}&lt;/h5&gt;
+    
+    <span class="text-info">&lt;!-- Flask/Jinja2 automatically converts special characters --&gt;</span>
+    <span class="text-info">&lt;!-- like &lt; and &gt; into &amp;lt; and &amp;gt;. --&gt;</span>
+    <span class="text-info">&lt;!-- The script is safely displayed as raw text, not executed. --&gt;</span>
+    &lt;p&gt;{% raw %}{{ review.content }}{% endraw %}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

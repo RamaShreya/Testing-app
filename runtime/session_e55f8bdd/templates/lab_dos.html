@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Denial of Service (DoS)</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white">
+        <h3 class="fs-4 fw-bold text-info"><i class="fa-solid fa-server me-2"></i>Module 9: Denial of Service (DoS)</h3>
+        <p class="mt-3">A Denial of Service (DoS) attack aims to disrupt the normal traffic of a targeted server, service, or network by overwhelming it with a flood of Internet traffic. When a server spends all its CPU and memory trying to answer fake requests from an attacker, legitimate users cannot load the website.</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Exposing heavy computational endpoints to anyone.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger"># INSECURE EXAMPLE (for learning only)</span>
+<span class="text-danger"># Expensive query exposed globally</span>
+
+@app.route('/api/search_all')
+def search_all():
+    <span class="text-warning"># DANGER: This endpoint searches 10,000,000 records.</span>
+    <span class="text-warning"># An attacker can write a script to hit this endpoint</span>
+    <span class="text-warning"># 100 times a second. The database will freeze trying</span>
+    <span class="text-warning"># to process it, crashing the entire website for everyone.</span>
+    
+    results = Database.execute("SELECT * FROM heavy_logs")
+    return jsonify(results)
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Using pagination, caching, and Web Application Firewalls (WAF).</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success"># SECURE IMPLEMENTATION</span>
+<span class="text-success"># Using Pagination and Caching</span>
+
+@app.route('/api/search_all')
+def search_all():
+    page = request.args.get('page', 1, type=int)
+    
+    <span class="text-info"># 1. Force pagination (only fetch 50 records max)</span>
+    <span class="text-info"># 2. Implement a CDN or caching layer like Redis</span>
+    <span class="text-info"># 3. Use a WAF (like Cloudflare) to automatically block</span>
+    <span class="text-info">#    IP addresses making unnatural amounts of requests.</span>
+    
+    results = Database.execute("SELECT * FROM heavy_logs LIMIT 50")
+    return jsonify(results)
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

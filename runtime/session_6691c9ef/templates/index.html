@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Banner -->
+<div class="hero-banner mb-5 rounded shadow-sm position-relative overflow-hidden bg-dark">
+    <!-- Using a placeholder background image for the hero banner -->
+    <div style="background-image: url('https://images.unsplash.com/photo-1531297172867-4f505dbce15a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; opacity: 0.6; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    
+    <div class="hero-content position-relative z-1 p-5 text-white h-100 d-flex flex-column justify-content-center">
+        <h1 class="display-4 fw-bold">Upgrade Your Tech</h1>
+        <p class="lead mb-4">Discover the latest laptops, smartphones, and accessories for your digital life.</p>
+        <a href="#products" class="btn btn-warning btn-lg shadow fw-bold px-4 rounded-pill" style="width: fit-content; background-color: #ffd814; border-color: #fcd200; color: #0f1111;">Shop Now</a>
+    </div>
+</div>
+
+<div id="products" class="content-container bg-transparent p-0 border-0 shadow-none">
+    {% if search_query %}
+        <h4 class="mb-4">Search results for "{{ search_query }}"</h4>
+        {% if not products %}
+            <p>No products found matching your search.</p>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm mt-2">Clear Search</a>
+        {% endif %}
+    {% else %}
+        <h3 class="mb-4 fw-bold">Featured Electronics</h3>
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="product-card">
+                <a href="{{ url_for('product_detail', product_id=product.id) }}" class="text-center">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500?text=Image+Not+Found';">
+                </a>
+                <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-title">
+                    {{ product.name }}
+                </a>
+                <div class="mb-1 text-warning small">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span class="text-primary ms-1">4.5</span>
+                </div>
+                <div class="product-price">
+                    ${{ "%.2f"|format(product.price) }}
+                </div>
+                <div class="mt-auto">
+                    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-primary w-100 py-2 fw-bold">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

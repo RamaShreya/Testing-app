@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-danger"><i class="fa-solid fa-folder-open me-2"></i>Module 8: Directory Traversal</h3>
+        <p class="mt-3">Also known as path traversal, this vulnerability allows an attacker to read arbitrary files on the server that is running an application. This might include application source code, configuration files, and sensitive system data.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-danger border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-danger">File Download Test</h5>
+                <p class="text-muted small mb-3">Try downloading the public file. Then, try to "traverse" up to the root to see the secret file.</p>
+                
+                <div class="list-group mb-3">
+                    <a href="{{ url_for('lab_download', file='readme.txt') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <span><i class="fa-solid fa-file-lines me-2 text-primary"></i> readme.txt (Public File)</span>
+                        <span class="badge bg-primary rounded-pill">Download</span>
+                    </a>
+                </div>
+
+                <div class="p-3 border border-danger rounded bg-white mt-3">
+                    <h6 class="fw-bold text-danger mb-2"><i class="fa-solid fa-terminal me-2"></i>Exploit Payloads</h6>
+                    <p class="small text-muted mb-2">If Vulnerability Mode is ON, try modifying the URL parameter directly:</p>
+                    <ul class="small mb-0">
+                        <li>Standard: <code>?file=readme.txt</code></li>
+                        <li>Traversal: <code>?file=../../secret.txt</code></li>
+                        <li>Absolute (Linux): <code>?file=/etc/passwd</code> (Note: This is a Windows environment, so try <code>C:\Windows\win.ini</code>)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+filename = request.args.get('file')
+file_path = os.path.join(download_dir, filename)
+<span class="text-warning">return send_file(file_path)</span>
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+from werkzeug.utils import secure_filename
+<span class="text-info">safe_name = secure_filename(filename)</span>
+file_path = os.path.join(dir, safe_name)
+return send_file(file_path)
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

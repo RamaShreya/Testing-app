@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">IDOR</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-info"><i class="fa-solid fa-id-card-clip me-2"></i>Module 4: Insecure Direct Object Reference (IDOR)</h3>
+        <p class="mt-3">IDOR occurs when an application provides direct access to objects based on user-supplied input without verifying if the user has permission to access that specific object.</p>
+        
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-info border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-info">Interactive Exploit Test</h5>
+                <p class="text-muted small mb-3">Login and try to view your own orders. Then, manually change the ID in the URL to view other users' orders.</p>
+                
+                {% if current_user.is_authenticated %}
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('view_orders', user_id=current_user.id) }}" class="btn btn-info text-white fw-bold">View My Orders (ID: {{ current_user.id }})</a>
+                    <a href="{{ url_for('view_orders', user_id=(1 if current_user.id != 1 else 2)) }}" class="btn btn-outline-info fw-bold">Try ID: {{ (1 if current_user.id != 1 else 2) }}</a>
+                </div>
+                <p class="small text-muted mt-2"><i class="fa-solid fa-circle-info me-1"></i> If Vulnerability Mode is ON, you will be able to see the other user's order history!</p>
+                {% else %}
+                <div class="alert alert-warning py-2 mb-0">Please <a href="{{ url_for('login') }}">login</a> first to test this module.</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Fetching data strictly based on the URL parameter.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+@app.route('/orders/&lt;user_id&gt;')
+def view_orders(user_id):
+    <span class="text-warning"># DANGER: No ownership check!</span>
+    orders = Order.query.filter_by(user_id=user_id).all()
+    return render_template('orders.html', orders=orders)
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Enforcing authorization checks against the current session.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+@app.route('/orders/&lt;user_id&gt;')
+def view_orders(user_id):
+    <span class="text-info"># Check if ID matches logged-in user</span>
+    if current_user.id != user_id:
+        return "Unauthorized", 403
+        
+    orders = Order.query.filter_by(user_id=user_id).all()
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

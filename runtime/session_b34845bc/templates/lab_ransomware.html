@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ransomware</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white">
+        <h3 class="fs-4 fw-bold text-danger"><i class="fa-solid fa-file-shield me-2"></i>Module 8: Ransomware</h3>
+        <p class="mt-3">Ransomware is malicious software that encrypts a victim's files, rendering them inaccessible. The attacker then demands a ransom to restore access. If an application allows unfiltered file uploads or runs with excessive system privileges, ransomware can infect the server.</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Allowing executable file uploads and running as Root.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger"># INSECURE EXAMPLE (for learning only)</span>
+<span class="text-danger"># Unrestricted File Upload</span>
+
+@app.route('/upload_profile_pic', methods=['POST'])
+def upload():
+    file = request.files['image']
+    
+    <span class="text-warning"># DANGER: The app blindly saves any file. </span>
+    <span class="text-warning"># An attacker can upload a malicious script (e.g. ransomware.py).</span>
+    <span class="text-warning"># If the app runs with Admin/Root system privileges,</span>
+    <span class="text-warning"># the script can encrypt the entire server!</span>
+    
+    file.save(os.path.join('/uploads', file.filename))
+    return "Uploaded!"
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Strict file validation and offline backups.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success"># SECURE IMPLEMENTATION</span>
+<span class="text-success"># Strict validation and least-privilege</span>
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload_profile_pic', methods=['POST'])
+def upload():
+    file = request.files['image']
+    
+    <span class="text-info"># 1. Enforce strict extension checks</span>
+    <span class="text-info"># 2. Run the application as a restricted user (no root access)</span>
+    <span class="text-info"># 3. Maintain regular, offline database backups!</span>
+    
+    if file and allowed_file(file.filename):
+        safe_name = secure_filename(file.filename)
+        file.save(os.path.join('/uploads', safe_name))
+        return "Uploaded securely!"
+    return "Invalid file type."
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

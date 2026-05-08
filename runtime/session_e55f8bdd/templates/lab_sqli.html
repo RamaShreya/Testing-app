@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">SQL Injection</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-danger"><i class="fa-solid fa-database me-2"></i>Module 1: SQL Injection (SQLi)</h3>
+        <p class="mt-3">SQL Injection happens when user input is directly concatenated into a database query. This allows an attacker to insert their own SQL commands.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-danger border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-danger">Interactive Exploit Test</h5>
+                <p class="text-muted small mb-3">Try searching for a user. If Vulnerability Mode is ON, try the payload: <code>' OR 1=1 --</code></p>
+                
+                <form action="{{ url_for('lab_sqli') }}" method="POST" class="row g-2">
+                    <div class="col-md-9">
+                        <input type="text" name="username" class="form-control" placeholder="Search Username (e.g. admin)" required>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-danger w-100 fw-bold">Execute Query</button>
+                    </div>
+                </form>
+
+                {% if query_used %}
+                <div class="mt-3">
+                    <p class="small mb-1 fw-bold">SQL Query Executed:</p>
+                    <code class="d-block p-2 bg-dark text-info rounded">{{ query_used }}</code>
+                </div>
+                {% endif %}
+
+                {% if results %}
+                <div class="mt-3">
+                    <p class="small mb-1 fw-bold">Query Results:</p>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered bg-white mb-0">
+                            <thead class="table-light">
+                                <tr><th>ID</th><th>Username</th></tr>
+                            </thead>
+                            <tbody>
+                                {% if results is string %}
+                                    <tr><td colspan="2" class="text-danger">Error: {{ results }}</td></tr>
+                                {% else %}
+                                    {% for row in results %}
+                                    <tr><td>{{ row[0] }}</td><td>{{ row[1] }}</td></tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Using string formatting or concatenation.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger"># INSECURE EXAMPLE (Active in VULN_MODE)</span>
+username = request.form.get('username')
+
+<span class="text-warning"># DANGER: Input is directly concatenated</span>
+query = f"SELECT * FROM users WHERE username='{username}'"
+db.session.execute(text(query))
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Using Parameterized Queries or ORMs.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success"># SECURE IMPLEMENTATION (Active in SAFE_MODE)</span>
+username = request.form.get('username')
+
+<span class="text-info"># Safe: Using ORM filtering</span>
+user = User.query.filter_by(username=username).all()
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

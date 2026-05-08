@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-info"><i class="fa-solid fa-share-from-square me-2"></i>Module 10: Open Redirect</h3>
+        <p class="mt-3">An open redirect occurs when an application takes a user-provided URL and redirects the user to it without validation. Attackers use this to craft phishing links that appear to come from a trusted domain.</p>
+
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-info border-opacity-25 bg-light shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-info">Redirect Test</h5>
+                <p class="text-muted small mb-3">Click the buttons to see how the redirect behaves. In a real attack, the target URL would be a malicious phishing site.</p>
+                
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('lab_redirect', url='/') }}" class="btn btn-info text-white fw-bold">Safe Redirect (to Home)</a>
+                    <a href="{{ url_for('lab_redirect', url='https://www.google.com') }}" class="btn btn-outline-danger fw-bold">Unsafe Redirect (to Google)</a>
+                </div>
+
+                <div class="p-3 border border-info rounded bg-white mt-4">
+                    <h6 class="fw-bold text-info mb-2"><i class="fa-solid fa-link me-2"></i>URL Manipulation</h6>
+                    <p class="small text-muted mb-2">If Vulnerability Mode is ON, any URL in the parameter will be trusted:</p>
+                    <code class="d-block p-2 bg-dark text-warning rounded">/lab/redirect?url=https://attacker-site.com/login</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2">Insecure (Vulnerable)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+target = request.args.get('url')
+<span class="text-warning">return redirect(target)</span>
+</code></pre>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2">Secure (Mitigated)</span>
+<pre class="bg-dark text-white p-3 rounded small mt-2"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+<span class="text-info">if target.startswith('/') or 
+   target.startswith(trusted_domain):</span>
+    return redirect(target)
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

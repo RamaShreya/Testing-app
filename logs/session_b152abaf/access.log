@@ -1,0 +1,54 @@
+2026-05-07 18:38:55,167 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/ - IP: 127.0.0.1
+2026-05-07 18:38:55,428 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/ - IP: 127.0.0.1
+2026-05-07 18:38:55,616 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/static/css/style.css - IP: 127.0.0.1
+2026-05-07 18:38:55,622 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/static/images/wireless_charger.png - IP: 127.0.0.1
+2026-05-07 18:38:55,674 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/static/images/ereader.png - IP: 127.0.0.1
+2026-05-07 18:38:56,740 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/favicon.ico - IP: 127.0.0.1
+2026-05-07 18:38:56,741 - access - ERROR - [session_b152abaf] Exception on http://127.0.0.1:53842/favicon.ico: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 841, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 450, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-05-07 18:39:28,702 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/ - IP: 127.0.0.1
+2026-05-07 18:39:28,707 - access - INFO - [session_b152abaf] POST http://127.0.0.1:53842/login - IP: 127.0.0.1
+2026-05-07 18:39:28,849 - access - ERROR - [session_b152abaf] Exception on http://127.0.0.1:53842/login: login.html
+Traceback (most recent call last):
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\runtime\session_b152abaf\app.py", line 112, in login
+    return render_template('login.html')
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\antigravity\vulnerable app\venv\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: login.html
+2026-05-07 18:39:29,048 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/toggle-vuln - IP: 127.0.0.1
+2026-05-07 18:39:29,052 - access - INFO - [session_b152abaf] GET http://127.0.0.1:53842/ - IP: 127.0.0.1
+2026-05-07 18:39:29,058 - access - INFO - [session_b152abaf] POST http://127.0.0.1:53842/lab/sqli - IP: 127.0.0.1

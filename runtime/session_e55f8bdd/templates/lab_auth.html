@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <a href="{{ url_for('lab') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('lab') }}" class="text-decoration-none text-muted">Security Lab</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Broken Authentication</li>
+        </ol>
+    </nav>
+
+    <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+        <h3 class="fs-4 fw-bold text-success"><i class="fa-solid fa-key me-2"></i>Module 3: Insecure Password Storage & Authentication</h3>
+        <p class="mt-3">Storing passwords in plain text or using weak comparison logic allows attackers to easily bypass authentication or steal credentials.</p>
+        
+        <!-- Try Exploit Section -->
+        <div class="card mb-4 border-success border-opacity-25 bg-light">
+            <div class="card-body">
+                <h5 class="card-title fw-bold text-success">Interactive Exploit Test</h5>
+                <p class="text-muted small mb-3">Try logging in with the default **admin** account using a **wrong password**.</p>
+                
+                <div class="alert alert-info py-2 small mb-3">
+                    <i class="fa-solid fa-lightbulb me-1"></i> <strong>How to Test:</strong>
+                    <ol class="mb-0 mt-1">
+                        <li>Toggle **Vulnerability Mode: ON**.</li>
+                        <li>Go to the <a href="{{ url_for('login') }}">Login Page</a>.</li>
+                        <li>Username: <code>admin</code> | Password: <code>password123</code> (Incorrect).</li>
+                        <li>Result: You will be logged in anyway because the insecure logic is active!</li>
+                    </ol>
+                </div>
+                <a href="{{ url_for('login') }}" class="btn btn-success fw-bold px-4">Go to Login Page</a>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border border-danger rounded h-100 p-3 bg-light">
+                    <span class="badge bg-danger mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> Insecure (Vulnerable)</span>
+                    <p class="text-muted small">Comparing passwords as plain text or allowing bypasses.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-danger"># INSECURE (Active in VULN_MODE)</span>
+if user:
+    # Danger: No hashing check
+    if input_password == "password123":
+        login_user(user)
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="border border-success rounded h-100 p-3 bg-light">
+                    <span class="badge bg-success mb-2"><i class="fa-solid fa-check me-1"></i> Secure (Mitigated)</span>
+                    <p class="text-muted small">Using strong, salted hashing algorithms.</p>
+<pre class="bg-dark text-white p-3 rounded small"><code><span class="text-success"># SECURE (Active in SAFE_MODE)</span>
+if user:
+    # Secure: Hash verification
+    if check_password_hash(user.pw_hash, input_pw):
+        login_user(user)
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

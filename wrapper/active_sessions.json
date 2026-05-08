@@ -1,0 +1,29 @@
+{
+    "session_b34845bc": {
+        "pid": 18112,
+        "runtime_dir": "d:\\antigravity\\vulnerable app\\runtime\\session_b34845bc",
+        "port": 62430,
+        "url": "http://127.0.0.1:62430",
+        "start_time": 1778159569.9721994,
+        "last_activity": 1778159569.9722002,
+        "status": "active"
+    },
+    "session_6691c9ef": {
+        "pid": 6832,
+        "runtime_dir": "d:\\antigravity\\vulnerable app\\runtime\\session_6691c9ef",
+        "port": 53762,
+        "url": "http://127.0.0.1:53762",
+        "start_time": 1778159907.527249,
+        "last_activity": 1778159907.5272498,
+        "status": "active"
+    },
+    "session_e55f8bdd": {
+        "pid": 19180,
+        "runtime_dir": "d:\\antigravity\\vulnerable app\\runtime\\session_e55f8bdd",
+        "port": 57949,
+        "url": "http://127.0.0.1:57949",
+        "start_time": 1778160257.1630008,
+        "last_activity": 1778160257.1630013,
+        "status": "active"
+    }
+}
