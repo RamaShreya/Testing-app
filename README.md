@@ -231,11 +231,9 @@ A robust, multi-channel logging system (`logger_manager.py`) is implemented to a
 
 ## Screenshots
 
-*(Placeholders - Add your actual screenshots here)*
-
-| Storefront | Lab Interface | Exploit Execution |
+| Home Page | login | cart |
 |:---:|:---:|:---:|
-| <img src="https://via.placeholder.com/400x250?text=E-Commerce+Storefront" alt="Storefront"> | <img src="https://via.placeholder.com/400x250?text=Interactive+Lab+Dashboard" alt="Lab Dashboard"> | <img src="https://via.placeholder.com/400x250?text=Captured+XSS+Payload" alt="Exploit"> |
+| ![Home]() | ![login](screenshots/dashboard.png) | ![cart](screenshots/exploit.png) |
 
 ---
 
