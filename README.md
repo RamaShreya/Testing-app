@@ -233,7 +233,7 @@ A robust, multi-channel logging system (`logger_manager.py`) is implemented to a
 
 | Home Page | login | cart |
 |:---:|:---:|:---:|
-| ![Home](https://github.com/RamaShreya/Testing-app/blob/main/screenshots/Screenshot%202026-05-08%20104217.png) | ![login](screenshots/dashboard.png) | ![cart](screenshots/exploit.png) |
+| ![Home](https://github.com/RamaShreya/Testing-app/blob/main/screenshots/Screenshot%202026-05-08%20104217.png) | ![login](https://github.com/RamaShreya/Testing-app/blob/main/screenshots/Screenshot%202026-05-08%20104330.png) | ![cart](screenshots/exploit.png) |
 
 ---
 
